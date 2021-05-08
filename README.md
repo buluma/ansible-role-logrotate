@@ -4,7 +4,7 @@ Install and configure logrotate on your system.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![github](https://github.com/buluma/ansible-role-logrotate/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-logrotate/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-logrotate)|[![quality](https://img.shields.io/ansible/quality/39060)](https://galaxy.ansible.com/robertdebock/logrotate)|[![downloads](https://img.shields.io/ansible/role/d/39060)](https://galaxy.ansible.com/robertdebock/logrotate)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-logrotate.svg)](https://github.com/robertdebock/ansible-role-logrotate/releases/)|
+|[![github](https://github.com/buluma/ansible-role-logrotate/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-logrotate/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-logrotate)|[![quality](https://img.shields.io/ansible/quality/39060)](https://galaxy.ansible.com/buluma/logrotate)|[![downloads](https://img.shields.io/ansible/role/d/39060)](https://galaxy.ansible.com/buluma/logrotate)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -39,7 +39,7 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
         compress: no
 
   roles:
-    - role: robertdebock.logrotate
+    - role: buluma.logrotate
 ```
 
 The machine needs to be prepared in CI this is done using `molecule/resources/prepare.yml`:
@@ -80,7 +80,7 @@ logrotate_group: syslog
 
 ## [Requirements](#requirements)
 
-- pip packages listed in [requirements.txt](https://github.com/robertdebock/ansible-role-logrotate/blob/master/requirements.txt).
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-logrotate/blob/master/requirements.txt).
 
 ## [Status of requirements](#status-of-requirements)
 
@@ -120,20 +120,8 @@ The minimum version of Ansible required is 2.10, tests have been done to:
 
 
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-logrotate/issues)
+If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-logrotate/issues)
 
 ## [License](#license)
 
 Apache-2.0
-
-## [Contributors](#contributors)
-
-I'd like to thank everybody that made contributions to this repository. It motivates me, improves the code and is just fun to collaborate.
-
-- [aisbergg](https://github.com/aisbergg)
-
-## [Author Information](#author-information)
-
-[Robert de Bock](https://robertdebock.nl/)
-
-Please consider [sponsoring me](https://github.com/sponsors/robertdebock).
