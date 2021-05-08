@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: Robert de Bock
-  namespace: robertdebock
+  author: Shadow Walker
+  namespace: buluma
   role_name: logrotate
   description: Install and configure logrotate on your system.
   license: Apache-2.0
