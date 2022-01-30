@@ -8,8 +8,6 @@
     logrotate_frequency: daily
     logrotate_keep: 7
     logrotate_compress: yes
-    logrotate_user: root
-    logrotate_group: syslog
     logrotate_entries:
       - name: example
         path: "/var/log/example/*.log"
@@ -19,12 +17,41 @@
       - name: example-keep
         path: "/var/log/example-keep/*.log"
         keep: 14
-      - name: example-compress-yes
+      - name: example-compress
         path: "/var/log/example-compress/*.log"
         compress: yes
-      - name: example-compress-no
-        path: "/var/log/example-compress/*.log"
-        compress: no
+      - name: example-script
+        path: "/var/log/example-script/*.log"
+        postrotate: killall -HUP some_process_name
+      - name: btmp
+        path: /var/log/btmp
+        missingok: yes
+        frequency: monthly
+        create: yes
+        create_mode: "0660"
+        create_user: root
+        create_group: utmp
+        keep: 1
+      - name: wtmp
+        path: /var/log/wtmp
+        missingok: yes
+        frequency: monthly
+        create: yes
+        create_mode: "0664"
+        create_user: root
+        create_group: utmp
+        minsize: 1M
+        keep: 1
+      - name: dnf
+        path: /var/log/hawkey.log
+        missingok: yes
+        notifempty: yes
+        keep: 4
+        frequency: weekly
+        create: yes
+      - name: example-sharedscripts
+        path: "/var/log/example-sharedscripts/*.log"
+        sharedscripts: yes
 
   roles:
     - role: ansible-role-logrotate
