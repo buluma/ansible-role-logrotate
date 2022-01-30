@@ -41,7 +41,7 @@ jobs:
           #  tag: "latest"
           # - image: "debian"
           #  tag: "latest"
-          # - image: "debian"
+          # - image: "debian" TODO check why this isnt working
           #  tag: "bookworm"
           - image: "fedora"
             tag: "34"
