@@ -4,7 +4,7 @@ Install and configure logrotate on your system.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![github](https://github.com/buluma/ansible-role-logrotate/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-logrotate/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-logrotate)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/logrotate)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/logrotate)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|
+|[![github](https://github.com/buluma/ansible-role-logrotate/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-logrotate/badges/main/pipeline.svg)](https://gitlab.com/buluma/ansible-role-logrotate)|[![quality](https://img.shields.io/ansible/quality/54758)](https://galaxy.ansible.com/buluma/logrotate)|[![downloads](https://img.shields.io/ansible/role/d/54758)](https://galaxy.ansible.com/buluma/logrotate)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
