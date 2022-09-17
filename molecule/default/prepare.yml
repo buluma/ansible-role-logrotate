@@ -9,7 +9,7 @@
     - role: buluma.cron
 
   post_tasks:
-    - name: create log directory
+    - name: Create log directory
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
@@ -21,7 +21,7 @@
         - /var/log/example-script
         - /var/log/example-sharedscripts
 
-    - name: create log file
+    - name: Create log file
       ansible.builtin.copy:
         dest: "{{ item }}"
         content: "example"
