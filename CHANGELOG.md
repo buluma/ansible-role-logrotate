@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.8](https://github.com/buluma/ansible-role-logrotate/tree/1.0.8) (2022-07-09)
+
+[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.0.7...1.0.8)
+
 ## [1.0.7](https://github.com/buluma/ansible-role-logrotate/tree/1.0.7) (2022-03-29)
 
 [Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.0.6...1.0.7)
