@@ -2,9 +2,9 @@
 
 Install and configure logrotate on your system.
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-logrotate/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-logrotate/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-logrotate)|[![quality](https://img.shields.io/ansible/quality/54758)](https://galaxy.ansible.com/buluma/logrotate)|[![downloads](https://img.shields.io/ansible/role/d/54758)](https://galaxy.ansible.com/buluma/logrotate)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-logrotate/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-logrotate/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-logrotate)|[![downloads](https://img.shields.io/ansible/role/d/4754)](https://galaxy.ansible.com/buluma/logrotate)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
