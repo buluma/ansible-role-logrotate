@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-logrotate/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.0.8...HEAD)
+
+**Closed issues:**
+
+- Update buluma/todo-to-issue-action@v1.0.1 @buluma [\#12](https://github.com/buluma/ansible-role-logrotate/issues/12)
+- Update action [\#11](https://github.com/buluma/ansible-role-logrotate/issues/11)
+
 ## [1.0.8](https://github.com/buluma/ansible-role-logrotate/tree/1.0.8) (2022-07-09)
 
 [Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.0.7...1.0.8)
