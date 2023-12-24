@@ -1,10 +1,10 @@
-# [Ansible role logrotate](#logrotate)
+# Ansible role [logrotate](https://galaxy.ansible.com/ui/standalone/roles/buluma/logrotate/documentation)
 
 Install and configure logrotate on your system.
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-logrotate/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-logrotate/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/logrotate)](https://galaxy.ansible.com/ui/standalone/roles/buluma/logrotate/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -193,7 +193,5 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 [Michael Buluma](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
