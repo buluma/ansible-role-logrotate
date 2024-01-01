@@ -39,7 +39,7 @@ molecule:
       - image: "docker-ubuntu-systemd"
         tag: "focal"
       - image: "docker-ubuntu-systemd"
-        tag: "bionic"
+        tag: "lunar"
       - image: "kali"
         tag: "latest"
 
