@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-logrotate/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.2.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump release-drafter/release-drafter from 5 to 6 [\#21](https://github.com/buluma/ansible-role-logrotate/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [1.2.0](https://github.com/buluma/ansible-role-logrotate/tree/1.2.0) (2024-01-20)
 
 [Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.1.0...1.2.0)
