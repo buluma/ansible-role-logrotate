@@ -46,8 +46,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "docker-molecule-images"
-            tag: "alpine-openrc"
+          - image: "alpine"
+            tag: "all"
           - image: "enterpriselinux"
             tag: "8"
           - image: "enterpriselinux"
@@ -76,8 +76,6 @@ jobs:
             tag: "jammy"
           - image: "docker-molecule-images"
             tag: "lunar"
-          - image: "docker-molecule-images"
-            tag: "noble"
           - image: "docker-molecule-images"
             tag: "kalilinux"
     steps:
