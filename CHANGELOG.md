@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-logrotate/tree/HEAD)
+## [24.3.31](https://github.com/buluma/ansible-role-logrotate/tree/24.3.31) (2024-03-29)
 
-[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.2.0...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.2.0...24.3.31)
 
 **Merged pull requests:**
 
@@ -74,11 +74,7 @@
 
 ## [1.0.1](https://github.com/buluma/ansible-role-logrotate/tree/1.0.1) (2021-05-08)
 
-[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/v1.0...1.0.1)
-
-## [v1.0](https://github.com/buluma/ansible-role-logrotate/tree/v1.0) (2021-05-08)
-
-[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/55ada4f55fc22d2f83c934887a558a6fe49214df...v1.0)
+[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/55ada4f55fc22d2f83c934887a558a6fe49214df...1.0.1)
 
 
 
