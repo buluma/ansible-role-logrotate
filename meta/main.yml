@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Michael Buluma
   namespace: buluma
@@ -7,9 +8,9 @@ galaxy_info:
   company: ShadowNet
   min_ansible_version: '2.12'
   platforms:
-  - name: Alpine
-    versions:
-    - all
+    - name: Alpine
+      versions:
+        - all
   - name: EL
     versions:
     - all
@@ -29,5 +30,5 @@ galaxy_info:
     versions:
     - all
   galaxy_tags:
-  - logrotate
+    - logrotate
 dependencies: []
