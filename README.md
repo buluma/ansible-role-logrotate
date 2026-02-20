@@ -1,10 +1,10 @@
-# Ansible role [logrotate](https://galaxy.ansible.com/ui/standalone/roles/buluma/logrotate/documentation)
+# [Ansible role logrotate](#ansible-role-logrotate)
 
 Install and configure logrotate on your system.
 
-|GitHub|Version|Issues|Pull Requests|Downloads|
-|------|-------|------|-------------|---------|
-|[![github](https://github.com/buluma/ansible-role-logrotate/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/logrotate)](https://galaxy.ansible.com/ui/standalone/roles/buluma/logrotate/documentation)|
+|GitHub|GitLab|Downloads|Version|
+|------|------|---------|-------|
+|[![github](https://github.com/buluma/ansible-role-logrotate/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-logrotate/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-logrotate/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-logrotate)|[![downloads](https://img.shields.io/ansible/role/d/buluma/logrotate)](https://galaxy.ansible.com/buluma/logrotate)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-logrotate.svg)](https://github.com/buluma/ansible-role-logrotate/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -12,15 +12,15 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-- name: converge
+- name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   vars:
     logrotate_frequency: daily
     logrotate_keep: 7
-    logrotate_compress: yes
+    logrotate_compress: true
     logrotate_entries:
       - name: example
         path: "/var/log/example/*.log"
@@ -32,39 +32,63 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
         keep: 14
       - name: example-compress
         path: "/var/log/example-compress/*.log"
-        compress: yes
+        compress: true
+      - name: example-copylog
+        path: "/var/log/example-copylog/*.log"
+        copylog: true
+      - name: example-copytruncate
+        path: "/var/log/example-copytruncate/*.log"
+        copytruncate: true
+      - name: example-delaycompress
+        path: "/var/log/example-delaycompress/*.log"
+        delaycompress: true
       - name: example-script
         path: "/var/log/example-script/*.log"
         postrotate: killall -HUP some_process_name
       - name: btmp
         path: /var/log/btmp
-        missingok: yes
+        missingok: true
         frequency: monthly
-        create: yes
+        create: true
         create_mode: "0660"
         create_user: root
         create_group: utmp
+        dateext: true
+        dateformat: "-%Y-%m-%d"
         keep: 1
       - name: wtmp
         path: /var/log/wtmp
-        missingok: yes
+        missingok: true
         frequency: monthly
-        create: yes
+        create: true
         create_mode: "0664"
         create_user: root
         create_group: utmp
         minsize: 1M
+        maxsize: 128M
+        dateext: true
+        dateformat: "-%Y%m%d"
         keep: 1
       - name: dnf
         path: /var/log/hawkey.log
-        missingok: yes
-        notifempty: yes
+        missingok: true
+        notifempty: true
         keep: 4
         frequency: weekly
-        create: yes
+        create: true
       - name: example-sharedscripts
         path: "/var/log/example-sharedscripts/*.log"
-        sharedscripts: yes
+        sharedscripts: true
+      - name: example-dateyesterday
+        state: present
+        path: "/var/log/example-dateyesterday/*.log"
+        dateyesterday: true
+      - name: example-absent
+        state: absent
+      # Negative numbers work on some distributions: `error: example-negative:10 bad rotation count '-1'\`
+      # - name: example-negative
+      #   path: "/var/log/example-keep-negative/*.log"
+      #   keep: -1
 
   roles:
     - role: buluma.logrotate
@@ -74,10 +98,10 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 
 ```yaml
 ---
-- name: prepare
+- name: Prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
 
   roles:
     - role: buluma.bootstrap
@@ -88,25 +112,35 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
+        mode: "0755"
       loop:
         - /var/log/example
         - /var/log/example-frequency
         - /var/log/example-keep
         - /var/log/example-compress
+        - /var/log/example-copylog
+        - /var/log/example-copytruncate
+        - /var/log/example-delaycompress
         - /var/log/example-script
         - /var/log/example-sharedscripts
+        - /var/log/example-dateyesterday
 
     - name: Create log file
       ansible.builtin.copy:
         dest: "{{ item }}"
         content: "example"
+        mode: "0644"
       loop:
         - /var/log/example/app.log
         - /var/log/example-frequency/app.log
         - /var/log/example-keep/app.log
         - /var/log/example-compress/app.log
+        - /var/log/example-copylog/app.log
+        - /var/log/example-copytruncate/app.log
+        - /var/log/example-delaycompress/app.log
         - /var/log/example-script/app.log
         - /var/log/example-sharedscripts/app.log
+        - /var/log/example-dateyesterday/app.log
         - /var/log/btmp
         - /var/log/wtmp
         - /var/log/hawkey.log
@@ -129,11 +163,18 @@ logrotate_frequency: weekly
 logrotate_keep: 4
 
 # Should rotated logs be compressed??
-logrotate_compress: yes
+logrotate_compress: true
+
+# Use date extension on log file names
+logrotate_dateext: false
 
 # User/Group for rotated log files (Loaded by OS-Specific vars if found, or and can be set manually)
-logrotate_user: "{{ _logrotate_user[ansible_distribution] | default(_logrotate_user['default'] ) }}"
-logrotate_group: "{{ _logrotate_group[ansible_distribution] | default(_logrotate_group['default'] ) }}"
+logrotate_user: "{{ _logrotate_user[ansible_distribution] | default(_logrotate_user['default']) }}"
+logrotate_group: "{{ _logrotate_group[ansible_distribution] | default(_logrotate_group['default']) }}"
+
+# Set the state of the service
+logrotate_service_state: "started"
+logrotate_service_enabled: true
 ```
 
 ## [Requirements](#requirements)
@@ -144,18 +185,17 @@ logrotate_group: "{{ _logrotate_group[ansible_distribution] | default(_logrotate
 
 The following roles are used to prepare a system. You can prepare your system in another way.
 
-| Requirement | GitHub | Version |
+| Requirement | GitHub | GitLab |
 |-------------|--------|--------|
-|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Ansible Molecule](https://github.com/buluma/ansible-role-bootstrap/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-bootstrap.svg)](https://github.com/shadowwalker/ansible-role-bootstrap)|
-|[buluma.cron](https://galaxy.ansible.com/buluma/cron)|[![Ansible Molecule](https://github.com/buluma/ansible-role-cron/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-cron/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-cron.svg)](https://github.com/shadowwalker/ansible-role-cron)|
-|[buluma.epel](https://galaxy.ansible.com/buluma/epel)|[![Ansible Molecule](https://github.com/buluma/ansible-role-epel/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-epel/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-epel.svg)](https://github.com/shadowwalker/ansible-role-epel)|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-bootstrap)|
+|[buluma.cron](https://galaxy.ansible.com/buluma/cron)|[![Build Status GitHub](https://github.com/buluma/ansible-role-cron/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-cron/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-cron/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-cron)|
+|[buluma.epel](https://galaxy.ansible.com/buluma/epel)|[![Build Status GitHub](https://github.com/buluma/ansible-role-epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-epel/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-epel/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-epel)|
 
 ## [Context](#context)
 
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.github.io/) for further information.
+This role is part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.github.io/) for further information.
 
 Here is an overview of related roles:
-
 ![dependencies](https://raw.githubusercontent.com/buluma/ansible-role-logrotate/png/requirements.png "Dependencies")
 
 ## [Compatibility](#compatibility)
@@ -165,29 +205,26 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 |container|tags|
 |---------|----|
 |[Alpine](https://hub.docker.com/r/buluma/alpine)|all|
-|[EL](https://hub.docker.com/r/buluma/enterpriselinux)|8, 9|
+|[EL](https://hub.docker.com/r/buluma/enterpriselinux)|all|
 |[Debian](https://hub.docker.com/r/buluma/debian)|all|
 |[Fedora](https://hub.docker.com/r/buluma/fedora)|all|
 |[opensuse](https://hub.docker.com/r/buluma/opensuse)|all|
 |[Ubuntu](https://hub.docker.com/r/buluma/ubuntu)|all|
-|[Kali](https://hub.docker.com/r/buluma/kali)|all|
+|[Kali](https://hub.docker.com/r/buluma/kalilinux)|all|
 
-The minimum version of Ansible required is 2.12, tests have been done to:
+The minimum version of Ansible required is 2.12, tests have been done on:
 
 - The previous version.
 - The current version.
 - The development version.
 
-If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-logrotate/issues)
-
-## [Changelog](#changelog)
-
-[Role History](https://github.com/buluma/ansible-role-logrotate/blob/master/CHANGELOG.md)
+If you find issues, please register them on [GitHub](https://github.com/buluma/ansible-role-logrotate/issues).
 
 ## [License](#license)
 
-[Apache-2.0](https://github.com/buluma/ansible-role-logrotate/blob/master/LICENSE)
+[Apache-2.0](https://github.com/buluma/ansible-role-logrotate/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
-[Shadow Walker](https://buluma.github.io/)
+[Michael Buluma](https://buluma.github.io/)
+

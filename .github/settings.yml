@@ -5,4 +5,4 @@
 repository:
   description: Install and configure logrotate on your system.
   homepage: https://buluma.github.io/
-  topics: logrotate, ansible, molecule, tox, playbook
+  topics: logrotate, ansible, molecule, playbook
