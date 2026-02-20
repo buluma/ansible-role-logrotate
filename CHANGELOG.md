@@ -1,14 +1,5 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-logrotate/tree/HEAD)
-
-[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/24.3.31...HEAD)
-
-**Closed issues:**
-
-- Update action [\#14](https://github.com/buluma/ansible-role-logrotate/issues/14)
-- rebuild action [\#13](https://github.com/buluma/ansible-role-logrotate/issues/13)
-
 ## [24.3.31](https://github.com/buluma/ansible-role-logrotate/tree/24.3.31) (2024-03-29)
 
 [Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/1.2.0...24.3.31)
