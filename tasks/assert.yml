@@ -1,5 +1,4 @@
 ---
-
 - name: assert | Test logrotate_frequency
   ansible.builtin.assert:
     that:
@@ -178,9 +177,7 @@
   loop_control:
     label: "{{ item.name }}"
   when:
-    - item.create_mode is defined or
-      item.create_user is defined or
-      item.create_group is defined
+    - item.create_mode is defined or item.create_user is defined or item.create_group is defined
 
 - name: assert | Test maxsize in logrotate_entries
   ansible.builtin.assert:
