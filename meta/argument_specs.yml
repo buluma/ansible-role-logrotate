@@ -1,5 +1,4 @@
 ---
-
 argument_specs:
   main:
     short_description: "Install and configure logrotate on your system."

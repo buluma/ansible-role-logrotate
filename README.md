@@ -12,138 +12,138 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-- name: Converge
-  hosts: all
-  become: true
-  gather_facts: true
+  - name: Converge
+    hosts: all
+    become: true
+    gather_facts: true
 
-  vars:
-    logrotate_frequency: daily
-    logrotate_keep: 7
-    logrotate_compress: true
-    logrotate_entries:
-      - name: example
-        path: "/var/log/example/*.log"
-      - name: example-frequency
-        path: "/var/log/example-frequency/*.log"
-        frequency: weekly
-      - name: example-keep
-        path: "/var/log/example-keep/*.log"
-        keep: 14
-      - name: example-compress
-        path: "/var/log/example-compress/*.log"
-        compress: true
-      - name: example-copylog
-        path: "/var/log/example-copylog/*.log"
-        copylog: true
-      - name: example-copytruncate
-        path: "/var/log/example-copytruncate/*.log"
-        copytruncate: true
-      - name: example-delaycompress
-        path: "/var/log/example-delaycompress/*.log"
-        delaycompress: true
-      - name: example-script
-        path: "/var/log/example-script/*.log"
-        postrotate: killall -HUP some_process_name
-      - name: btmp
-        path: /var/log/btmp
-        missingok: true
-        frequency: monthly
-        create: true
-        create_mode: "0660"
-        create_user: root
-        create_group: utmp
-        dateext: true
-        dateformat: "-%Y-%m-%d"
-        keep: 1
-      - name: wtmp
-        path: /var/log/wtmp
-        missingok: true
-        frequency: monthly
-        create: true
-        create_mode: "0664"
-        create_user: root
-        create_group: utmp
-        minsize: 1M
-        maxsize: 128M
-        dateext: true
-        dateformat: "-%Y%m%d"
-        keep: 1
-      - name: dnf
-        path: /var/log/hawkey.log
-        missingok: true
-        notifempty: true
-        keep: 4
-        frequency: weekly
-        create: true
-      - name: example-sharedscripts
-        path: "/var/log/example-sharedscripts/*.log"
-        sharedscripts: true
-      - name: example-dateyesterday
-        state: present
-        path: "/var/log/example-dateyesterday/*.log"
-        dateyesterday: true
-      - name: example-absent
-        state: absent
+    vars:
+      logrotate_frequency: daily
+      logrotate_keep: 7
+      logrotate_compress: true
+      logrotate_entries:
+        - name: example
+          path: "/var/log/example/*.log"
+        - name: example-frequency
+          path: "/var/log/example-frequency/*.log"
+          frequency: weekly
+        - name: example-keep
+          path: "/var/log/example-keep/*.log"
+          keep: 14
+        - name: example-compress
+          path: "/var/log/example-compress/*.log"
+          compress: true
+        - name: example-copylog
+          path: "/var/log/example-copylog/*.log"
+          copylog: true
+        - name: example-copytruncate
+          path: "/var/log/example-copytruncate/*.log"
+          copytruncate: true
+        - name: example-delaycompress
+          path: "/var/log/example-delaycompress/*.log"
+          delaycompress: true
+        - name: example-script
+          path: "/var/log/example-script/*.log"
+          postrotate: killall -HUP some_process_name
+        - name: btmp
+          path: /var/log/btmp
+          missingok: true
+          frequency: monthly
+          create: true
+          create_mode: "0660"
+          create_user: root
+          create_group: utmp
+          dateext: true
+          dateformat: "-%Y-%m-%d"
+          keep: 1
+        - name: wtmp
+          path: /var/log/wtmp
+          missingok: true
+          frequency: monthly
+          create: true
+          create_mode: "0664"
+          create_user: root
+          create_group: utmp
+          minsize: 1M
+          maxsize: 128M
+          dateext: true
+          dateformat: "-%Y%m%d"
+          keep: 1
+        - name: dnf
+          path: /var/log/hawkey.log
+          missingok: true
+          notifempty: true
+          keep: 4
+          frequency: weekly
+          create: true
+        - name: example-sharedscripts
+          path: "/var/log/example-sharedscripts/*.log"
+          sharedscripts: true
+        - name: example-dateyesterday
+          state: present
+          path: "/var/log/example-dateyesterday/*.log"
+          dateyesterday: true
+        - name: example-absent
+          state: absent
       # Negative numbers work on some distributions: `error: example-negative:10 bad rotation count '-1'\`
       # - name: example-negative
       #   path: "/var/log/example-keep-negative/*.log"
       #   keep: -1
 
-  roles:
-    - role: buluma.logrotate
+    roles:
+      - role: buluma.logrotate
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-logrotate/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-- name: Prepare
-  hosts: all
-  become: true
-  gather_facts: false
+  - name: Prepare
+    hosts: all
+    become: true
+    gather_facts: false
 
-  roles:
-    - role: buluma.bootstrap
-    - role: buluma.cron
+    roles:
+      - role: buluma.bootstrap
+      - role: buluma.cron
 
-  post_tasks:
-    - name: Create log directory
-      ansible.builtin.file:
-        path: "{{ item }}"
-        state: directory
-        mode: "0755"
-      loop:
-        - /var/log/example
-        - /var/log/example-frequency
-        - /var/log/example-keep
-        - /var/log/example-compress
-        - /var/log/example-copylog
-        - /var/log/example-copytruncate
-        - /var/log/example-delaycompress
-        - /var/log/example-script
-        - /var/log/example-sharedscripts
-        - /var/log/example-dateyesterday
+    post_tasks:
+      - name: Create log directory
+        ansible.builtin.file:
+          path: "{{ item }}"
+          state: directory
+          mode: "0755"
+        loop:
+          - /var/log/example
+          - /var/log/example-frequency
+          - /var/log/example-keep
+          - /var/log/example-compress
+          - /var/log/example-copylog
+          - /var/log/example-copytruncate
+          - /var/log/example-delaycompress
+          - /var/log/example-script
+          - /var/log/example-sharedscripts
+          - /var/log/example-dateyesterday
 
-    - name: Create log file
-      ansible.builtin.copy:
-        dest: "{{ item }}"
-        content: "example"
-        mode: "0644"
-      loop:
-        - /var/log/example/app.log
-        - /var/log/example-frequency/app.log
-        - /var/log/example-keep/app.log
-        - /var/log/example-compress/app.log
-        - /var/log/example-copylog/app.log
-        - /var/log/example-copytruncate/app.log
-        - /var/log/example-delaycompress/app.log
-        - /var/log/example-script/app.log
-        - /var/log/example-sharedscripts/app.log
-        - /var/log/example-dateyesterday/app.log
-        - /var/log/btmp
-        - /var/log/wtmp
-        - /var/log/hawkey.log
+      - name: Create log file
+        ansible.builtin.copy:
+          dest: "{{ item }}"
+          content: "example"
+          mode: "0644"
+        loop:
+          - /var/log/example/app.log
+          - /var/log/example-frequency/app.log
+          - /var/log/example-keep/app.log
+          - /var/log/example-compress/app.log
+          - /var/log/example-copylog/app.log
+          - /var/log/example-copytruncate/app.log
+          - /var/log/example-delaycompress/app.log
+          - /var/log/example-script/app.log
+          - /var/log/example-sharedscripts/app.log
+          - /var/log/example-dateyesterday/app.log
+          - /var/log/btmp
+          - /var/log/wtmp
+          - /var/log/hawkey.log
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -169,8 +169,10 @@ logrotate_compress: true
 logrotate_dateext: false
 
 # User/Group for rotated log files (Loaded by OS-Specific vars if found, or and can be set manually)
-logrotate_user: "{{ _logrotate_user[ansible_distribution] | default(_logrotate_user['default']) }}"
-logrotate_group: "{{ _logrotate_group[ansible_distribution] | default(_logrotate_group['default']) }}"
+logrotate_user: "{{ _logrotate_user[ansible_distribution] | default(_logrotate_user['default'])
+  }}"
+logrotate_group: "{{ _logrotate_group[ansible_distribution] | default(_logrotate_group['default'])
+  }}"
 
 # Set the state of the service
 logrotate_service_state: "started"
