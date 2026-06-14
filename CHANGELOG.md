@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-logrotate/tree/HEAD)
+## [26.6.0](https://github.com/buluma/ansible-role-logrotate/tree/26.6.0) (2026-06-14)
 
-[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/24.3.31...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-logrotate/compare/24.3.31...26.6.0)
 
 **Closed issues:**
 
