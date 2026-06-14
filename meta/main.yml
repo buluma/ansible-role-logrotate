@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Michael Buluma
+  author: buluma
   namespace: buluma
   role_name: logrotate
   description: Install and configure logrotate on your system.
