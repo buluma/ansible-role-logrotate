@@ -7,5 +7,5 @@
   tasks:
     - name: Run logrotate
       ansible.builtin.command:
-      changed_when: false
         cmd: logrotate /etc/logrotate.conf
+      changed_when: false
